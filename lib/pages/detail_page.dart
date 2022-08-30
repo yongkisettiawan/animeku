@@ -68,24 +68,7 @@ class DetailPage extends StatelessWidget {
                           width: 8,
                         ),
                         Expanded(
-                          child: OutlinedButton(
-                            onPressed: () {},
-                            // color: Color(0xff5C40CC),
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 12,
-                                vertical: 4,
-                              ),
-                              child: Text(
-                                '+ Favorite',
-                                textAlign: TextAlign.center,
-                                style: GoogleFonts.poppins(
-                                  color: Color(0xff5C40CC),
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ),
+                          child: Favorite(),
                         )
                       ],
                     ),
@@ -101,6 +84,43 @@ class DetailPage extends StatelessWidget {
                 ),
               ),
             ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class Favorite extends StatefulWidget {
+  Favorite({Key? key}) : super(key: key);
+
+  @override
+  State<Favorite> createState() => _FavoriteState();
+}
+
+class _FavoriteState extends State<Favorite> {
+  bool Favorite = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return OutlinedButton(
+      onPressed: () {
+        setState(() {
+          Favorite = !Favorite;
+        });
+      },
+      // color: Color(0xff5C40CC),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 12,
+          vertical: 4,
+        ),
+        child: Text(
+          Favorite ? 'Is Favorite' : '+ Favorite',
+          textAlign: TextAlign.center,
+          style: GoogleFonts.poppins(
+            color: Color(0xff5C40CC),
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),
